@@ -11,7 +11,16 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css">
         <link rel="stylesheet" href="./css/styles.css">
     </head>
-    <body>
+    <body>   
+        <div class="backdrop is-hidden" data-modal>
+            <div class="modal">
+                <button class="close-button" type="button" data-modal-close>
+                    <svg width="18px" height="18px">
+                        <use href="./image/symbol-defs.svg#icon-close-black"></use>
+                    </svg>
+                </button>
+            </div>
+        </div>     
         <!-- Заголовок-->
         <header class="header">
             <div class="container header-container">
@@ -41,9 +50,8 @@
                 <!-- <div class="overlay"></div> -->
                 <div class="container">
                     <h1 class="hero-title">Эффективные решения для вашего бизнеса</h1>
-                    <button type="button" class="button hero-button">Заказать услугу</button>
+                    <button data-modal-open type="button" class="button hero-button">Заказать услугу</button>
                 </div>
-                
             </section>
 
             <!-- 2 секция -->
@@ -98,12 +106,21 @@
                     <ul class="list examples-list card-set">
                         <li class="item">
                             <img src="./image/1.jpg" alt="Программирование" width="370" height="294">
+                            <div class="examples">
+                                <h3 class="examples-title">Десктопные приложения</h3>
+                            </div>
                         </li>
                         <li class="item">
                             <img src="./image/2.jpg" alt="Приложения для смартфонов" width="370" height="294">
+                            <div class="examples">
+                                <h3 class="examples-title">Мобильные приложения</h3>
+                            </div>
                         </li>
                         <li class="item">
                             <img src="./image/3.jpg" alt="Дизайн" width="370" height="294">
+                            <div class="examples">
+                                <h3 class="examples-title">Дизайнерские решения</h3>
+                            </div>
                         </li>                        
                     </ul>
                 </div>
@@ -274,6 +291,7 @@
                 </div>
             </section>
         </main>
+        
 
         <!-- Футер -->
         <footer class="footer">
@@ -317,5 +335,6 @@
                 </div>
             </div>
         </footer>
+        <script src="./js/modal.js"></script>
     </body>
 </html>
