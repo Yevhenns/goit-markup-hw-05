@@ -403,7 +403,6 @@ address {
 }
 .footer-contacts {
     color: var(--footer-contacts-color);
-    display: block;
 }
 .footer-contacts:hover,
 .footer-contacts:focus {
