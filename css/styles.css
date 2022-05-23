@@ -15,7 +15,8 @@
     --examples-background: rgba(47, 48, 58, 0.8);
     --thumb-background: rgba(33, 150, 243, 0.9);
     --modal-background: rgba(0, 0, 0, 0.2);
-    --modal-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);    
+    --modal-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    --cubic: cubic-bezier(0.4, 0, 0.2, 1)
 }
 body {
     font-family: 'Roboto', sans-serif;
@@ -133,11 +134,13 @@ svg {
 .header-pages .link:hover,
 .header-pages .link:focus {
     color: var(--secondary-text-color);
+    transition: color 250ms var(--cubic);
 }
 .header-contacts .link:hover,
 .header-contacts .link:focus {
     color: var(--secondary-text-color);
     fill: var(--secondary-text-color);
+    transition: color 250ms var(--cubic);
 }
 .header-pages .active-page {
     color: var(--secondary-text-color);
@@ -222,7 +225,8 @@ svg {
 } 
 .hero-button:hover,
 .hero-button:focus {
-    background: #188CE8;
+    background-color: #188CE8;
+    transition: background-color 250ms var(--cubic);
 }
 .overlay {
     max-width: 1600px;
@@ -344,6 +348,7 @@ svg {
 .icon-set .link:focus {
     fill: var(--logo-white);
     background-color: var(--secondary-text-color);
+    transition: fill 250ms var(--cubic), background-color 250ms var(--cubic);
 }
 /* 4 секция */
 
@@ -368,6 +373,7 @@ svg {
 .client-icon-item .link:focus {
     border: 1px solid var(--secondary-text-color);
     fill: var(--secondary-text-color);
+    transition: fill 250ms var(--cubic), border 250ms var(--cubic);
 }
 /* 5 секция */
 
@@ -402,6 +408,7 @@ address {
 .footer-contacts:hover,
 .footer-contacts:focus {
     color: var(--secondary-text-color);
+    transition: color 250ms var(--cubic);
 }
 .footer-navigation {
     display: flex;
@@ -442,23 +449,33 @@ address {
     top: 0;
     width: 100%;
     height: 100%;
+    opacity: 1;
     background-color: var(--modal-background);
+    transition: opacity 250ms var(--cubic);
+    
 }
 .backdrop.is-hidden {
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
+    
 }
 .modal {
-    position: absolute;
-    transform: translate(-50%, -50%);
+    position: absolute;    
+    transform: translate(-50%, -50%) scale(1);
     width: 528px;
     height: 581px;
     left: 50%;
     top: 50%;
+
+    transition: transform 250ms var(--cubic) 250ms;
+
     border-radius: 4px;
     background-color: var(--logo-white);
     box-shadow: var(--modal-shadow);
+}
+.backdrop.is-hidden .modal {
+    transform: translate(-50%, -50%) scale(1.2);
 }
 .close-button {
     position: absolute;
@@ -497,6 +514,8 @@ address {
     box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1),
     0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
+    transition: background-color 250ms var(--cubic),
+    color 250ms var(--cubic), box-shadow 250ms var(--cubic);
 }
 .button-set {
     display: flex;
@@ -538,6 +557,13 @@ address {
 }
 .service-link:hover .thumb,
 .service-link:focus .thumb {
+    transform: translateY(0);
+    transition: transform 250ms var(--cubic);
+}
+.service-link:hover .service-thumb-description,
+.service-link:focus .service-thumb-description {
+    transform: scale(1);
+    transition: transform 250ms var(--cubic) 50ms;
     opacity: 1;
 }
 .service-list .item {
@@ -545,21 +571,24 @@ address {
 }
 .service-thumb {
     position: relative;
+    overflow: hidden;
 }
 .service-thumb .thumb {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
+    transform: translateY(100%);
     padding: 63px 24px;
     background-color: var(--thumb-background);
-    opacity: 0;
 }
 .service-thumb-description {
     font-size: 18px;
     line-height: 1.56;
     letter-spacing: 0.03em;
     color: var(--logo-white);
+    transform: scale(2);
+    opacity: 0;
 }
 /* Примеры услуг */
 /* ----------PORTFOLIO---------- */
